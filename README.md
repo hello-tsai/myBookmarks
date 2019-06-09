@@ -1,5 +1,5 @@
 # 作品集
-### （一）导航页页
+### （一）导航页面
 预览地址：https://hello-tsai.github.io/myBookmarks/nav-demo/index.html 
 
 代码地址：https://github.com/hello-tsai/myBookmarks/blob/master/nav-demo/index.html
