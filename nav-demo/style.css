@@ -3,11 +3,29 @@
     padding: 0px;
 }
 
+body {
+    background: url(bg2.jpg) no-repeat center center;
+    background-size: cover;
+}
+
 a {
     text-decoration: none;
 }
 
-kbd {
+main {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.wrapper {
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+main kbd {
     border: 1px solid red;
     width: 4em;
     height: 4em;
@@ -20,21 +38,80 @@ kbd>button {
     right: 0;
     bottom: 0;
     display: none;
-    position: absolute
+    position: absolute;
+    border: none;
+    background: url(edit.png) no-repeat center center;
+    background-size: cover;
+    width: 20px;
+    height: 20px;
 }
 
 kbd:hover>button {
     display: inline-block;
+    cursor: pointer;
 }
 
 main {
     text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    height: 90vh;
+}
+
+#main {
+    display: inline-block;
 }
 
 #mainx>div:nth-child(2) {
-    margin-left: 2em;
+    margin-left: -22px;
 }
 
 #mainx>div:nth-child(3) {
-    margin-left: 4em;
+    margin-left: -80px;
+}
+
+.key {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(to bottom, #292929 0%, #111111 100%);
+    color: #c5c5c5;
+    border: 1px solid #373737;
+    border-radius: 7px;
+    box-shadow: 0 0 0 1px #1a1b1c, 0 0 0 2px #1f2020;
+    align-items: center;
+    justify-content: center;
+    display: inline-flex;
+    font-size: 18px;
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative
+}
+
+.row {
+    margin: 30px;
+}
+
+.row .key {
+    margin: 0 10px;
+}
+
+.key img {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    left: 3px;
+    bottom: 2px;
+}
+
+#foot {
+    text-align: center;
+    display: block;
+    height: 10vh;
+}
+
+#foot>.copyright {
+    background-color: #111111;
+    color: #fff;
+    font-size: 36px;
+    font-family: Arial, Helvetica, sans-serif;
 }

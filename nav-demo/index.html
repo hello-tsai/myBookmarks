@@ -6,142 +6,143 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-
+    <link rel="stylesheet" href="style.css">
     <style>
-        * {
-            margin: 0px;
-            padding: 0px;
-        }
-        
-        a {
-            text-decoration: none;
-        }
-        
-        kbd {
-            border: 1px solid red;
-            width: 4em;
-            height: 4em;
-            display: inline-block;
-            text-transform: uppercase;
-            position: relative;
-        }
-        
-        kbd>button {
-            right: 0;
-            bottom: 0;
-            display: none;
-            position: absolute
-        }
-        
-        kbd:hover>button {
-            display: inline-block;
-        }
-        
-        main {
-            text-align: center;
-        }
-        
-        #mainx>div:nth-child(2) {
-            margin-left: 2em;
-        }
-        
-        #mainx>div:nth-child(3) {
-            margin-left: 4em;
-        }
+
     </style>
 
 </head>
 
 <body>
-    <main id='mainx'></main>
-    <script>
-        //取数据结构
-        keys = {
-            '0': {
-                '0': 'q',
-                '1': 'w',
-                '2': 'e',
-                '3': 'r',
-                '4': 't',
-                '5': 'y',
-                '6': 'u',
-                '7': 'i',
-                '8': 'o',
-                '9': 'p',
-                length: 10
-            },
-            '1': {
-                '0': ' a ',
-                '1': ' s ',
-                '2': ' d ',
-                '3': ' f ',
-                '4': ' g ',
-                '5': ' h ',
-                '6': ' j ',
-                '7': ' k ',
-                '8': ' l ',
-                length: 9
-            },
-            '2': {
-                '0': 'z',
-                '1': 'x',
-                '2': 'c',
-                '3': 'v',
-                '4': 'b',
-                '5': 'n',
-                '6': 'm',
-                length: 7
-            },
-            'length': 3,
-        }
-        hash = {
-            'q': 'qq.com',
-            'w': 'w3cschools.com',
-            'e': 'ebay.com',
-            't': 'tencent.com',
-            'z': 'zhihu.com',
-        }
-        hashInLocalStorag = JSON.parse(localStorage.getItem('zzz') || 'null')
-        if (hashInLocalStorag) {
-            hash = hashInLocalStorag
-        }
-        //遍历keys生成kbd标签
-        index = 0
-        while (index < keys['length']) //0 1 2
-        {
+    <header>
 
-            divcreat = document.createElement('div')
+    </header>
+    <main>
+        <div id='mainx' class="wrapper"></div>
+
+    </main>
+    <footer id="foot"></footer>
+
+
+    <script>
+        //初始化数据：
+        var hasha = init()
+        var keys = hasha['keys']
+        var hash = hasha['hash']
+
+
+        //生成键盘：
+
+        for (var index = 0; index < keys['length']; index++) {
+            divcreat = dc('div')
+            divcreat.className = 'row'
             mainx.appendChild(divcreat);
+
             row = keys[index]
-            index2 = 0
-            while (index2 < row['length']) { //0-9 0-8 0-6
-                kbdcreate = document.createElement('kbd') //创建kbd标签
+            for (index2 = 0; index2 < row['length']; index2++) { //0-9 0-8 0-6
+                kbdcreate = dc('kbd') //创建kbd标签
+                kbdcreate.className = 'key'
                 kbdcreate.textContent = row[index2] //添加数组内容
-                buttonx = document.createElement('button') //创建按钮标签
-                buttonx.textContent = '编辑' //在按钮标签上填充内容编辑
-                buttonx.id = row[length] //每个button里面赋id
+                imgx = dc('img')
+                imgx.src = 'http://' + hash[row[index2]] + '/favicon.ico'
+                imgx.onerror = function(xxx) {
+                    xxx.target.src = "love.png"
+                }
+                kbdcreate.appendChild(imgx)
+                buttonx = dc('button') //创建按钮标签 
+                buttonx.id = row[index2] //每个button里面赋id
                 buttonx.onclick = function(abc) {
-                    key = abc['target']['id'] //qwe...
+                    button2 = abc['target'] //qwe...
+                    img2 = button2.previousSibling
+                    key = button2['id']
                     x = prompt('请变更网址') //qq.com
                     hash[key] = x //更新hash
+                    img2.src = 'http://' + x + '/favicon.ico'
                     localStorage.setItem('zzz', JSON.stringify(hash))
-                    console.log(hash)
                 }
-                kbdcreate.appendChild(buttonx) //每个kbd里添加buton
                 divcreat.appendChild(kbdcreate) //每个div里添加kbd
-                index2 = index2 + 1
-            }
-            index = index + 1
+                kbdcreate.appendChild(buttonx) //每个kbd里添加buton
 
+
+
+            }
         }
-        //监听键盘：
+        //footer
+        copyrightx = dc('div')
+        copyrightx.className = 'copyright'
+        foot.appendChild(copyrightx)
+        copyrightx.textContent = '©蔡晓婷'
+            //监听键盘：
         document.onkeypress = function(abc) {
-            key = abc['key'] //qwe...
-            website = hash[key]
-            window.open('http://' + website, '_blank') //打开新页面
+                key = abc['key'] //qwe...
+                website = hash[key]
+                window.open('http://' + website, '_blank') //打开新页面
+            }
+            //函数
+        function dc(tagName) {
+            return document.createElement(tagName)
+        }
+
+        function init(keys, hash) {
+            var keys = {
+                '0': {
+                    '0': 'q',
+                    '1': 'w',
+                    '2': 'e',
+                    '3': 'r',
+                    '4': 't',
+                    '5': 'y',
+                    '6': 'u',
+                    '7': 'i',
+                    '8': 'o',
+                    '9': 'p',
+                    length: 10
+                },
+                '1': {
+                    '0': ' a ',
+                    '1': ' s ',
+                    '2': ' d ',
+                    '3': ' f ',
+                    '4': ' g ',
+                    '5': ' h ',
+                    '6': ' j ',
+                    '7': ' k ',
+                    '8': ' l ',
+                    length: 9
+                },
+                '2': {
+                    '0': 'z',
+                    '1': 'x',
+                    '2': 'c',
+                    '3': 'v',
+                    '4': 'b',
+                    '5': 'n',
+                    '6': 'm',
+                    length: 7
+                },
+                'length': 3,
+            }
+            var hash = {
+                'q': 'qq.com',
+                'w': 'weibo.com',
+                'e': 'ebay.com',
+                't': 'tencent.com',
+                'z': 'zhihu.com',
+                'd': 'douban.com',
+                'i': 'iqiyi.com',
+
+
+            }
+            var hashInLocalStorag = JSON.parse(localStorage.getItem('zzz') || 'null')
+            if (hashInLocalStorag) {
+                hash = hashInLocalStorag
+            }
+            return {
+                "keys": keys,
+                "hash": hash
+            }
         }
     </script>
-</body>
 
 
 </html>
