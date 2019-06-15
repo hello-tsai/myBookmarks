@@ -21,7 +21,7 @@
 
 作品心得：js好难哦0.0 ，代码进行了优化比较有进步啦。
 
-### （二）个人简历
+### （三）个人简历
 预览地址：https://hello-tsai.github.io/myBookmarks/canvas/index.html
 
 代码地址：https://github.com/hello-tsai/demo/blob/master/nav-test/index.html
