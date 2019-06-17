@@ -6,6 +6,8 @@
 body {
     margin: 0;
     overflow: hidden;
+    /*解决在手机上页面会滚动的bug*/
+    position: fixed;
 }
 
 button {
