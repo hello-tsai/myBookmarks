@@ -32,7 +32,7 @@
 
 作品心得：js好难哦0.0 ，代码进行了优化比较有进步啦。
 ### （四）画一只皮卡丘
-预览地址：https://hello-tsai.github.io/demo/nav-test/index.html
+预览地址：https://github.com/hello-tsai/myBookmarks/tree/master/pikachu
 
 代码地址：https://hello-tsai.github.io/myBookmarks/pikachu/index3.html
 
